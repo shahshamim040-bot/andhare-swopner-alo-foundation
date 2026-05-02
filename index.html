@@ -1,188 +1,142 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আঁধারে স্বপ্নের আলো ফাউন্ডেশন বাংলাদেশ</title>
-    <style>
-        :root { --primary: #1a2a6c; --secondary: #b21f1f; --accent: #fdbb2d; --light: #f4f7f6; --success: #27ae60; }
-        body { font-family: 'Arial', 'SolaimanLipi', sans-serif; margin: 0; padding: 0; background: var(--light); color: #333; scroll-behavior: smooth; text-align: center; }
-        
-        /* Navigation */
-        .navbar { background: var(--primary); padding: 10px 5%; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo-img { width: 50px; height: 50px; border-radius: 50%; background: white; object-fit: cover; }
-        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
-        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; padding: 8px 12px; border-radius: 5px; transition: 0.3s; }
-        .nav-links a:hover { background: var(--secondary); }
-
-        /* Leaderboard */
-        .header-section { background: white; padding: 40px 20px; }
-        .foundation-title { color: var(--secondary); font-size: clamp(22px, 5vw, 32px); margin-bottom: 30px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 10px; }
-        .leader-img { width: 200px; height: 200px; border-radius: 50%; border: 6px solid var(--primary); object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .sub-leaders { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        .sub-card { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 240px; }
-        .sub-img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--secondary); object-fit: cover; }
-
-        /* Slider */
-        .slider-container { width: 95%; max-width: 1100px; height: 350px; margin: 20px auto; position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .slide { display: none; width: 100%; height: 100%; }
-        .slide.active { display: block; animation: fade 1s; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Content Display Area */
-        #data-display { padding: 30px 5%; background: #eef2f3; display: none; margin: 20px; border-radius: 15px; }
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; text-align: left; }
-        .member-card { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid var(--secondary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-        /* About & Gallery */
-        .section { padding: 40px 8%; background: white; text-align: justify; line-height: 1.8; }
-        .gallery-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 20px; }
-        .gallery-item { height: 140px; overflow: hidden; border-radius: 8px; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-        .gallery-item img:hover { transform: scale(1.1); }
-
-        /* Donation & Footer */
-        .donate-box { background: var(--success); color: white; padding: 50px 20px; }
-        .donate-card { background: white; color: black; display: inline-block; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        footer { background: #111; color: white; padding: 40px 20px; }
-        .emergency-grid { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
-        .service-box img { width: 45px; filter: invert(1); }
-
-        /* Lightbox */
-        #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 80%; border: 3px solid white; }
-
-        @keyframes fade { from {opacity: 0.4} to {opacity: 1} }
+@keyframes rotateBangla {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <a href="#" class="logo-area">
-            <img src="logo.png" alt="Logo" class="logo-img">
-            <span>আঁধারে স্বপ্নের আলো</span>
-        </a>
-        <div class="nav-links">
-            <a href="#about">সম্পর্কে</a>
-            <a href="javascript:void(0)" onclick="showProbashi()">প্রবাসী শাখা</a>
-            <a href="javascript:void(0)" onclick="showBloodGroups()">ব্লাড ডোনার</a>
-            <a href="#gallery">গ্যালারি</a>
-            <a href="#donate" style="background: var(--secondary);">দান করুন</a>
-        </div>
-    </nav>
-
-    <header class="header-section">
-        <h1 class="foundation-title">আঁধারে স্বপ্নের আলো ফাউন্ডেশন বাংলাদেশ</h1>
+</header>
+    <div class="slider-container">
+        <div class="slides"><img src="slider1.jpg" onerror="this.src='https://via.placeholder.com/800x210?text=Slider+1'"></div>
+        <div class="slides"><img src="slider2.jpg" onerror="this.src='https://via.placeholder.com/800x210?text=Slider+2'"></div>
+        <div class="slides"><img src="slider3.jpg" onerror="this.src='https://via.placeholder.com/800x210?text=Slider+3'"></div>
+    </div>
+<section style="padding: 15px 10px; background: #fff; margin: 20px 0; border-radius: 15px; font-family: 'Segoe UI', Roboto, sans-serif; border: 1px solid #eee;">
+    <div style="max-width: 500px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; border: 2px solid #27ae60;">
         
-        <div class="leader-box">
-            <img src="chairman.jpg" alt="Chairman" class="leader-img">
-            <h2>মোঃ মীর হোসাইন (রাজু) পাটোয়ারী</h2>
-            <p><strong>প্রতিষ্ঠাতা সভাপতি</strong></p>
+        <div style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 12px; text-align: center;">
+            <h3 style="color: white; margin: 0; font-size: 18px; letter-spacing: 1px;">ডোনেশন করুন 💖</h3>
         </div>
 
-        <div class="sub-leaders">
-            <div class="sub-card">
-                <img src="secretary.jpg" alt="Secretary" class="sub-img">
-                <h4>মোহাম্মদ রাশেদুল হাসান</h4>
-                <p>প্রতিষ্ঠাতা, সেক্রেটারি</p>
+        <div style="padding: 15px;">
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
+                <p style="margin: 0 0 5px 0; color: #166534; font-weight: bold; text-align: center; border-bottom: 1px solid #bbf7d0; padding-bottom: 3px;">ব্যাংক হিসাব তথ্য</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; color: #333;">
+                    <span><b>নাম:</b> আঁধারে স্বপ্নের আলো</span>
+                    <span><b>ব্যাংক:</b> সোনালী (হাজীগঞ্জ)</span>
+                    <span><b>হিসাব:</b> ১২৩-৪৫৬-৭৮৯</span>
+                    <span><b>রাউটিং:</b> ১২৩৪৫৬৭৮৯</span>
+                </div>
+                <p style="margin: 5px 0 0 0; text-align: center; color: #d946ef; font-weight: bold;">বিকাশ/নগদ: ০১৮XXXXXXXX</p>
+            </div>
+
+            <form id="donationForm" style="display: flex; flex-direction: column; gap: 7px;">
+                <div style="display: flex; gap: 7px;">
+                    <input type="text" placeholder="নাম" required style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 12px;">
+                    <input type="number" placeholder="টাকা" required style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 12px;">
+                </div>
+                <select required style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 12px; background: #fff;">
+                    <option value="">মাধ্যম বেছে নিন</option>
+                    <option value="bank">ব্যাংক</option>
+                    <option value="bkash">বিকাশ</option>
+                    <option value="nagad">নগদ</option>
+                </select>
+                <input type="text" placeholder="TrxID বা রেফারেন্স" required style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 12px;">
+                <button type="submit" style="background: #27ae60; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;">নিশ্চিত করুন</button>
+            </form>
+            <p id="successMsg" style="display: none; color: #27ae60; font-weight: bold; margin-top: 10px; text-align: center; font-size: 13px;">✅ ডোনেশন সফল হয়েছে। ধন্যবাদ!</p>
+
+            <div style="margin-top: 15px; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+                <a href="https://www.facebook.com/profile.php?id=100078651475468" target="_blank" style="display: inline-flex; align-items: center; background: #1877F2; color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 11px; font-weight: bold; gap: 5px;">
+                    <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook এ যুক্ত হন
+                </a>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <div class="slider-container">
-        <a href="https://www.facebook.com/profile.php?id=100078651475468" target="_blank">
-            <div class="slide active"><img src="slider1.jpg"></div>
-            <div class="slide"><img src="slider2.jpg"></div>
-        </a>
+<script>
+    document.getElementById('donationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+    });
+</script>
+    <div class="main-content">
+<div class="leader-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; gap: 12px; padding: 5px 0; clear: both;">
+    
+    <div class="leader-card" style="background: #ffffff; width: 85%; max-width: 300px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 12px; border-bottom: 4px solid #1a237e; margin: 0 auto;">
+        <img src="chairman.jpg" alt="Chairman" style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid #ff9800; padding: 3px; object-fit: cover; margin: 0 auto 8px auto; display: block;">
+        <h2 style="font-size: 18px; font-weight: 800; background: linear-gradient(45deg, #1a237e, #d32f2f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 5px 0;">মোঃ মীর হোসাইন (রাজু) পাটোয়ারী</h2>
+        <p style="font-size: 14px; color: #e65100; background: #fff3e0; display: inline-block; padding: 2px 12px; border-radius: 12px; font-weight: bold; margin: 0;">প্রতিষ্ঠাতা সভাপতি</p>
     </div>
 
-    <div id="data-display"></div>
+    <div class="leader-card" style="background: #ffffff; width: 80%; max-width: 270px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 10px; border-bottom: 4px solid #2e7d32; margin: 0 auto;">
+        <img src="Rashed.png" alt="Secretary" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #00c853; padding: 3px; object-fit: cover; margin: 0 auto 8px auto; display: block;">
+        <h2 style="font-size: 16px; font-weight: 800; background: linear-gradient(45deg, #1b5e20, #00c853); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 5px 0;">মোহাম্মদ রাশেদুল হাসান</h2>
+        <p style="font-size: 13px; color: #1b5e20; background: #e8f5e9; display: inline-block; padding: 2px 12px; border-radius: 12px; font-weight: bold; margin: 0;">প্রতিষ্ঠাতা ও সাধারণ সম্পাদক</p>
+    </div>
 
-    <section class="section" id="about">
-        <h2 style="text-align: center; color: var(--secondary);">সংগঠন এর লক্ষ্য ও উদ্দেশ্য</h2>
-        <p>আমাদের প্রধান লক্ষ্য আল্লাহর সন্তুষ্টি অর্জন। শিক্ষা, স্বাস্থ্য, সামাজিক মূল্যবোধ এবং সুবিধাবঞ্চিত দরিদ্র এতিম শিশুদের সুনাগরিক হিসেবে গড়ে তোলা আমাদের মূল কাজ।</p>
-        
-        <h2 style="text-align: center; margin-top: 50px;" id="gallery">ফটো গ্যালারি</h2>
-        <div class="gallery-container">
-            <div class="gallery-item"><img src="photo1.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo2.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo3.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo4.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo5.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo6.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo7.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo8.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo9.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="gallery-item"><img src="photo10.jpg" onclick="openLightbox(this.src)"></div>
+</div>
+
+
+        <div class="about-text">
+            <h3>সংগঠন এর লক্ষ্য ও উদ্দেশ্য-</h3>
+            <p>আমাদের প্রাধান লক্ষ্য আল্লাহর তালার সন্তষ্টি আর্জন। আমাদের উদ্দেশ্য শিক্ষা, স্বাস্থ্য, সামাজিক মূল্যবোধ, সাংস্কৃতিক উন্নয়ন এবং সুবিধাবঞ্চিত দরিদ্র এতিম ও মানুষদের সমাজের সুনাগরিক গড়ে তোলা এবং সমাজে পথ শিশু শব্দটি অভিধান থেকে মুছে দেওয়ার প্রত্যয়ে একটি সামাজিক সংগঠন এই সংগঠন এর মাধ্যমে যুবকদের কে ঐক্যবদ্ধ করে জাতীর কল্যাণে সামাজিক সেবামুলক কাজে যুবকদের অংশগ্রহন নিশ্চিত করে ।</p>
+            
+            <h3>ভূমিকাঃ</h3>
+            <p>“সুশীল সমাজ গড়ার অবিরাম প্রত্যয়” এই মূলমন্ত্রকে সামনে রেখে একদল নিরবিচ্ছিন্ন যুবক একই ছালাতলে এসে কল্যাণধর্মী কার্য বাস্তবায়ন ও মানবতার সেবায় নিজেদের আত্মনিয়োগের উদ্দেশ্যে সংঘবদ্ধ হয় । এরই ধারাবাহিকতার প্রয়াস আমাদের এই ফাউন্ডেশন । ২০২১ সালের ২০ জুলাই আঁধারে স্বপ্নের আলো ফাউন্ডেশন বাংলাদেশ নামে এই সংগঠন প্রতিষ্ঠিত হবে ইনশাআল্লাহ । ইহা একটি অরাজনৈতিক স্বেচ্ছাসেবী সংগঠন হিসেবে কার্যক্রম পরিচালনা করিবে ।</p>
+
+            <h3>এই সংগঠন এর মূলনীতি-</h3>
+            <p>১। আল্লাহর প্রতি পূর্ণাঙ্গ আস্থা ও বিশ্বাস। ২। সামাজিক স্বেচ্ছাসেবা ও সহযোগীতা। ৩। অরাজনৈতিক ও অলাভজনক। ৪। সদাচরণ ও সবার মাঝে ভ্রাতৃত্ব বজায় রাখা।</p>
+
+            <h3>এই সংগঠন এর কর্মসূচী (এ টু জেড)-</h3>
+            <p>১। পাঠাগার প্রতিষ্ঠা। ২। ফ্রি রক্তদান কর্মসূচি। ৩। বৃক্ষরোপন কর্মসূচি। ৪। জাতীয় গুরুত্বপূর্ণ দিবস উদযাপন। ৫। মাদক বিরোধী প্রচারনা। ৬। জনসচেতনতা মূলক কাজে অংশগ্রহণ। ৭। খাদ্য ও পুষ্টি বিষয়ক সচেতনতা। ৮। গরীব ও দুঃস্থদের সহায়তা। ৯। তরুণ সমাজকে সংগঠিত করা। ১০। দারিদ্র্যসীমার নিচের মানুষের পাশে থাকা। ১১। এতিম শিশুদের নিয়ে কাজ করা। ১২। সাহিত্য, সংস্কৃতি, ক্রীড়া ও বিনোদনে উৎসাহ প্রদান। ১৩। প্রাথমিক চিকিৎসা সেবা। ১৪। মেধাবী শিক্ষার্থীদের সহায়তা। ১৫। সামাজিক ও শিক্ষা কর্মকাণ্ড। ১৬। আত্মনির্ভরশীলতা সৃষ্টি। ১৭। মেধা ও সৃজনশীলতার বিকাশ। ১৮। রমজানে ইফতার সামগ্রী বিতরণ। ১৯। ঈদ প্যাকেজ বিতরণ। ২০। সামাজিক দায়বদ্ধতা সৃষ্টি। ২১। সদস্যদের ক্ষমতায়ন। ২২। শিশু কল্যাণ ও গণশিক্ষা কেন্দ্র।</p>
         </div>
-    </section>
 
-    <section class="donate-box" id="donate">
-        <h2>মানবতার কল্যাণে এগিয়ে আসুন</h2>
-        <div class="donate-card">
-            <p><strong>বিকাশ/নগদ (পার্সোনাল):</strong> আপনার নাম্বার দিন</p>
+        <h3 style="margin-top: 30px; font-size: 18px; color: var(--primary);">ফটো গ্যালারি</h3>
+        <div class="gallery">
+            <script>for(let i=1; i<=8; i++){ document.write(`<img src="photo${i}.jpg" onerror="this.src='https://via.placeholder.com/90'">`); }</script>
         </div>
-    </section>
-
-    <footer>
-        <h3>সরকারি জরুরি সেবা</h3>
-        <div class="emergency-grid">
-            <div class="service-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/999_Logo.svg/1200px-999_Logo.svg.png"><br>৯৯৯</div>
-            <div class="service-box"><img src="https://cdn-icons-png.flaticon.com/512/3063/3063171.png"><br>১৬২৬৩</div>
-            <div class="service-box"><img src="https://cdn-icons-png.flaticon.com/512/784/784867.png"><br>১০২</div>
+    </div>
+<div style="text-align: center; margin: 10px 0; padding: 10px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <p style="margin: 0; font-size: 11px; color: #888;">💻 কারিগরি সহায়তায়</p>
+    <p style="margin: 5px 0; font-size: 15px; color: #222; font-weight: bold;">👤 শামীম হোসেন</p>
+    <p style="margin: 0; font-size: 12px; color: #444;">🎓 সহ-শিক্ষা বিষয়ক সম্পাদক (প্রবাসী শাখা)</p>
+    <p style="margin: 3px 0; font-size: 12px; color: #666;">🏢 আঁধারে স্বপ্নের আলো ফাউন্ডেশন</p>
+    <p style="margin: 5px 0 0 0;">
+        <a href="mailto:Shahshamim040@gmail.com" style="color: #007bff; text-decoration: none; font-size: 13px; font-weight: 500;">
+            📧 Shahshamim040@gmail.com
+        </a>
+    </p>
+</div>
+</div>
+    <div class="emergency-footer">
+        <strong style="font-size: 14px;">জরুরি সেবা নম্বরসমূহ</strong>
+        <div class="emerg-grid">
+            <div class="emerg-item">🚑 এম্বুলেন্স: ৯৯৯</div><div class="emerg-item">👮 পুলিশ: ৯৯৯</div><div class="emerg-item">🔥 ফায়ার সার্ভিস: ১০২</div><div class="emerg-item">📞 নারী সহায়তা: ১০৯</div>
         </div>
-        <p style="margin-top: 30px; font-size: 12px; opacity: 0.6;">© ২০২৬ আঁধারে স্বপ্নের আলো ফাউন্ডেশন।</p>
-    </footer>
-
-    <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
+        <p style="margin-top: 15px; font-size: 10px; opacity: 0.5;">© ২০২৬ আঁধারে স্বপ্নের আলো ফাউন্ডেশন বাংলাদেশ</p>
+    </div>
 
     <script>
-        // স্লাইডার
-        let sIdx = 0;
-        const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
-            slides[sIdx].classList.remove('active');
-            sIdx = (sIdx + 1) % slides.length;
-            slides[sIdx].classList.add('active');
-        }, 4000);
-
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-
-        // প্রবাসী কমিটির তালিকা
-        function showProbashi() {
-            const display = document.getElementById('data-display');
-            display.style.display = 'block';
-            const mList = [
-                {n: "মনির হোসেন", p: "প্রধান উপদেষ্টা"}, {n: "আরিফ হোসেন", p: "সিনিয়র উপদেষ্টা"},
-                {n: "মোঃ ইমরান হোসেন", p: "সভাপতি"}, {n: "সোহাগ হোসেন", p: "সাধারণ সম্পাদক"},
-                {n: "শফিকুল ইসলাম", p: "সিনিয়র সহ-সভাপতি"}, {n: "মোঃ ফয়সাল বেপারী", p: "সহ-সভাপতি"},
-                {n: "বাদশা ফাহাদ", p: "যুগ্ম সাধারণ সম্পাদক"}, {n: "রেদওয়ান আহমেদ", p: "সহ-সাধারণ সম্পাদক"}
-                // ছবির তালিকা অনুযায়ী বাকিদের নাম একইভাবে এখানে যোগ করতে পারবেন।
-            ];
-            let html = `<h3>প্রবাসী কমিটি (২০২৬-২০২৮)</h3><div class="member-grid">`;
-            mList.forEach(m => {
-                html += `<div class="member-card"><strong>${m.n}</strong><br><small>${m.p}</small></div>`;
+        function openNav(id) { document.getElementById(id).style.width = "280px"; }
+        function closeNav(id) { document.getElementById(id).style.width = "0"; }
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        for (var i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                var content = this.nextElementSibling;
+                content.style.display = (content.style.display === "block") ? "none" : "block";
             });
-            html += `</div>`;
-            display.innerHTML = html;
-            window.location.href = "#data-display";
         }
-
-        function showBloodGroups() {
-            const display = document.getElementById('data-display');
-            display.style.display = 'block';
-            const groups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
-            let html = `<h3>ব্লাড ডোনার লিস্ট</h3><div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">`;
-            groups.forEach(g => {
-                html += `<button onclick="alert('${g} ডোনার ডাটা শীঘ্রই আসছে')" style="padding:10px 20px; background:var(--secondary); color:white; border:none; cursor:pointer; border-radius:5px;">${g}</button>`;
-            });
-            html += `</div>`;
-            display.innerHTML = html;
-            window.location.href = "#data-display";
+        let slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 3000);
         }
     </script>
 </body>
